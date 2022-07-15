@@ -7,8 +7,8 @@ function App() {
           src="assets/brue.png"
           alt="brue"
           style={{
-            width: '5vmin',
-            height: '5vmin',
+            width: '7vmin',
+            height: '7vmin',
           }}
         />
       </div>
