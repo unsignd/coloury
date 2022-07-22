@@ -1,15 +1,16 @@
 import { useEffect } from 'react';
 import io from 'socket.io-client';
 
-function Main() {
-  const socket = io('http://localhost:80/');
+const socket = io('http://localhost:80/');
 
+function Main() {
   useEffect(() => {
     socket.on('alert', (msg: string) => {
       alert(msg);
     });
 
     socket.on('successed', (code: string) => {
+      socket.close();
       window.location.href = `/${code}/setting`;
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

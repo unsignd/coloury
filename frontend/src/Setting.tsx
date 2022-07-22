@@ -2,9 +2,10 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import io from 'socket.io-client';
 
+const socket = io('http://localhost:80/');
+
 function Setting() {
   const { roomCode } = useParams();
-  const socket = io('http://localhost:80/');
 
   useEffect(() => {
     socket.emit('check_room_valid', roomCode);
@@ -14,10 +15,12 @@ function Setting() {
     });
 
     socket.on('back', () => {
-      window.location.href = '/';
+      socket.close();
+      window.location.replace('/');
     });
 
     socket.on('scan_successed', (nickname: string) => {
+      socket.close();
       window.location.href = `/${roomCode}/${nickname}`;
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -2,9 +2,32 @@
 
 body {
   margin: 0;
-  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 * {
   font-family: 'Manrope', sans-serif;
+  -webkit-user-drag: none;
+}
+
+progress {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  height: 1.5vmin;
+  background-color: #f1f1f2;
+}
+
+progress::-moz-progress-bar {
+  height: 1.5vmin;
+  background-color: #f1f1f2;
+}
+
+progress::-webkit-progress-value {
+  background-color: #f44336;
 }
